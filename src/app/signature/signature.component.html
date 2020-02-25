@@ -1,0 +1,13 @@
+<!--
+<canvas #myCanvas (mouseup)="mouseup($event)" (mousedown)="mousedown($event)" (mouseout)="mouseout($event)" (mousemove)="mousemove($event)" style="border:1px solid #000000; width: 75%"></canvas>
+<br>
+-->
+<div #svgWrapper  (mouseup)="mouseup($event)" (mousedown)="mousedown($event)" (mouseout)="mouseout($event)" (mousemove)="mousemove($event)" style="width: 75%">
+  <svg #mySVG style="border:1px solid #000000; width: 100%" (mouseout)="svgMouseout($event)">
+    <line *ngFor='let s of segments' [attr.x1]="s.start.x" [attr.y1]="s.start.y" [attr.x2]="s.end.x" [attr.y2]="s.end.y" style="stroke:rgb(255,0,0);stroke-width:2"></line>
+  </svg>
+</div>
+<br>
+<button (click)="save()"> Save </button>
+<button (click)="load()"> Load </button>
+<button (click)="clear()"> Clear </button>
