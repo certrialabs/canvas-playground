@@ -63,7 +63,7 @@ export class SignatureComponent implements OnInit, AfterViewInit {
   private lineConfigs = new LineConfigs(1);
   private savedData: any;
   private defaultCanvasSize = 1024;
-  //segments: Array<Segment> = [new Segment(new Point(0, 0), new Point(100, 100)), new Segment(new Point(100, 100), new Point(50, 50))];
+  private storedeSegments: Array<Segment> = [];
   segments: Array<Segment> = [];
 
   constructor() { }
@@ -182,6 +182,18 @@ export class SignatureComponent implements OnInit, AfterViewInit {
 
   clear() {
     this.canvas.getContext('2d').clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  saveSVG() {
+    this.storedeSegments = this.segments;
+  }
+
+  clearSVG() {
+    this.segments = [];
+  }
+
+  loadSVG() {
+    this.segments = this.storedeSegments;
   }
 
   private updateCanvasSize(width, height) {
